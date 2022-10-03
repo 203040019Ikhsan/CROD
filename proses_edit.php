@@ -3,11 +3,9 @@
 include 'koneksi.php';
 
 	// membuat variabel untuk menampung data dari form
-  $id = $_POST['no'];
-  $nama  = $_POST['nama'];
-  $author     = $_POST['author'];
-  $jumlah_halaman    = $_POST['jumlah_halaman'];
-  $harga    = $_POST['harga'];
+  $id_buku = $_POST['id_buku'];
+  $judul_buku  = $_POST['judul_buku'];
+  $pengarang     = $_POST['pengarang'];
   $gambar = $_FILES['gambar']['name'];
   //cek dulu jika merubah gambar produk jalankan coding ini
   if($gambar != "") {
@@ -21,8 +19,8 @@ include 'koneksi.php';
                   move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
                       
                     // jalankan query UPDATE berdasarkan ID yang produknya kita edit
-                   $query  = "UPDATE buku SET nama = '$nama', author = '$author', jumlah_halaman = '$jumlah_halaman', harga = '$harga', gambar = '$nama_gambar_baru'";
-                    $query .= "WHERE no = '$id'";
+                   $query  = "UPDATE buku SET judul_buku = '$judul_buku', pengarang = '$pengarang', gambar = '$nama_gambar_baru'";
+                    $query .= "WHERE id_buku = '$id_buku'";
                     $result = mysqli_query($koneksi, $query);
                     // periska query apakah ada error
                     if(!$result){
@@ -39,8 +37,8 @@ include 'koneksi.php';
               }
     } else {
       // jalankan query UPDATE berdasarkan ID yang produknya kita edit
-      $query  = "UPDATE buku SET nama = '$nama', author = '$author', jumlah_halaman = '$jumlah_halaman', harga = '$harga'";
-      $query .= "WHERE no = '$id'";
+      $query  = "UPDATE buku SET judul_buku = '$judul_buku', pengarang = '$pengarang'";
+      $query .= "WHERE id_buku = '$id_buku'";
       $result = mysqli_query($koneksi, $query);
       // periska query apakah ada error
       if(!$result){

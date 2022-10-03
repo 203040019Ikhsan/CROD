@@ -3,12 +3,12 @@
 include 'koneksi.php';
 
   // mengecek apakah di url ada nilai GET id
-  if (isset($_GET['id'])) {
+  if (isset($_GET['id_buku'])) {
     // ambil nilai id dari url dan disimpan dalam variabel $id
-    $id = ($_GET["id"]);
+    $id = ($_GET["id_buku"]);
 
     // menampilkan data dari database yang mempunyai id=$id
-    $query = "SELECT * FROM buku WHERE no='$id'";
+    $query = "SELECT * FROM buku WHERE id_buku='$id'";
     $result = mysqli_query($koneksi, $query);
     // jika data gagal diambil maka akan tampil error berikut
     if(!$result){
@@ -77,28 +77,21 @@ include 'koneksi.php';
   </head>
   <body>
       <center>
-        <h1>Edit Data Buku <?php echo $data['nama']; ?></h1>
+        <h1>Edit Data Buku <?php echo $data['judul_buku']; ?></h1>
       <center>
       <form method="POST" action="proses_edit.php" enctype="multipart/form-data" >
       <section class="base">
         <!-- menampung nilai id produk yang akan di edit -->
-        <input name="no" value="<?php echo $data['no']; ?>"  hidden />
+        <input name="id" value="<?php echo $data['id_buku']; ?>"  hidden />
         <div>
           <label>Nama Buku</label>
-          <input type="text" name="nama" value="<?php echo $data['nama']; ?>" autofocus="" required="" />
+          <input type="text" name="nama" value="<?php echo $data['judul_buku']; ?>" autofocus="" required="" />
         </div>
         <div>
           <label>Author Buku</label>
-         <input type="text" name="author" value="<?php echo $data['author']; ?>" />
+         <input type="text" name="pengarang" value="<?php echo $data['pengarang']; ?>" />
         </div>
-          <div>
-              <label>Jumlah Halaman</label>
-              <input type="text" name="jumlah_halaman" value="<?php echo $data['jumlah_halaman']; ?>" />
-          </div>
-        <div>
-          <label>Harga Beli</label>
-         <input type="text" name="harga" required=""value="<?php echo $data['harga']; ?>" />
-        </div>
+          
         <div>
           <label>Gambar Buku</label>
           <img src="gambar/<?php echo $data['gambar']; ?>" style="width: 120px;float: left;margin-bottom: 5px;">

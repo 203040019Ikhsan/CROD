@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CRUD Buku</title>
+    <title>Online Buku</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
       <style type="text/css">
       * {
@@ -13,7 +13,7 @@
       }
       h1 {
         text-transform: uppercase;
-        color: salmon;
+        color: black;
       }
     table {
       border: solid 1px #DDEEEE;
@@ -38,11 +38,14 @@
         /*text-shadow: 1px 1px 1px #fff;*/
     }
     a {
-          background-color: salmon;
+          background-color: red;
           color: #fff;
           padding: 10px;
           text-decoration: none;
           font-size: 12px;
+    }
+    body {
+	background-color: yellow;
     }
     </style>
   </head>
@@ -81,12 +84,12 @@
        <tr>
        <td><?php echo $no; ?></td>
           <td><?php echo $row['judul_buku']; ?></td>
-           <td><?php echo $row['Pengarang']; ?></td>
-          <td style="text-align: center;"><img src="gambar/<?php echo $row['Gambar']; ?>" style="width: 120px;"></td>
+           <td><?php echo $row['pengarang']; ?></td>
+          <td style="text-align: center;"><img src="gambar/<?php echo $row['gambar']; ?>" style="width: 120px;"></td>
           <td>
-              <a class='btn btn-primary btn-sm' href="edit_produk.php?id=">Update Data</a> |
-              <a class='btn btn-danger btn-sm' href="proses_hapus.php?id=" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus Data</a> |
-              <a class='btn btn-warning btn-sm' href="edit_produk.php?id=">Lihat Data Details</a>
+              <a class='btn btn-primary btn-sm' href="edit_produk.php?id_buku<?= $row['id_buku'];?>">Update Data</a> |
+              <a class='btn btn-danger btn-sm' href="proses_hapus.php?id_buku=" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus Data</a> |
+              <a class='btn btn-warning btn-sm' href="edit_produk.php?id=<?= $row['id_buku']; ?>">Lihat Data Details</a>
           </td>
       </tr>
          

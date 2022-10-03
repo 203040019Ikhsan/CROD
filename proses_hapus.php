@@ -1,9 +1,9 @@
 <?php
 include 'koneksi.php';
-$id = $_GET["id"];
+$id = $_GET["id_buku"];
 
     //jalankan query DELETE untuk menghapus data
-    $query = "DELETE FROM buku WHERE no='$id' ";
+    $query = "DELETE FROM buku WHERE id_buku='$id' ";
     $hasil_query = mysqli_query($koneksi, $query);
 
     //periksa query, apakah ada kesalahan
